@@ -1,0 +1,346 @@
+/* --- VARIABLES DU TEMPLATE --- */
+:root {
+  --background: #101010;
+  --sec: #a476ff;
+  --white: #dfdfdf;
+  --white-3: rgba(243, 243, 243, 0.06);
+  --border: rgba(255, 255, 255, 0.06);
+}
+
+/* --- BASES --- */
+.particles-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 3px; height: 3px;
+  background-color: var(--sec);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: monAnimation 10s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-duration: 6s; animation-delay: 0s; }
+.particle:nth-child(2) { left: 30%; animation-duration: 5s; animation-delay: 2s; }
+.particle:nth-child(3) { left: 50%; animation-duration: 9s; animation-delay: 5s; width: 4px; height: 4px; }
+.particle:nth-child(4) { left: 70%; animation-duration: 7s; animation-delay: 1s; }
+.particle:nth-child(5) { left: 90%; animation-duration: 11s; animation-delay: 4s; }
+
+@keyframes monAnimation {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.3; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+
+body {
+  background-color: var(--background);
+  color: var(--white);
+  line-height: 1.5;
+
+  
+}
+
+html {
+  /* Active l'animation de glissement */
+  scroll-behavior: smooth;
+  
+  /* Crée une marge invisible en haut pour éviter que la section 
+     ne se cache sous ta barre de navigation fixe */
+  scroll-padding-top: 120px; 
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- EFFET TEXTE BRILLANT --- */
+.text-brillant {
+  background: linear-gradient(135deg, var(--sec) 25%, #eee5ff 50%, var(--sec) 75%);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+}
+
+@keyframes shine {
+  0% { background-position: 100% 50%; }
+  30%, 70% { background-position: 0% 50%; }
+}
+
+/* --- NAVIGATION --- */
+nav {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(10px);
+}
+
+.nav_contenu {
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem; 
+  border-radius: 20px; 
+  border: 1px solid transparent; 
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--white);
+  border-color: var(--sec); 
+  background-color: rgba(164, 118, 255, 0.1); 
+}
+
+/* --- SECTIONS --- */
+.accueil {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.a-propos {
+  padding: 6rem 0;
+}
+
+.border-top {
+  border-top: 1px solid var(--border);
+}
+
+/* --- TYPOGRAPHIE --- */
+h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  color: var(--white);
+}
+
+.subtitle {
+  color: var(--white);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* --- BOUTONS --- */
+.btn-icon {
+  padding: 0.6rem 1.2rem;
+  background-color: rgba(20, 20, 20, 0.6);
+  border: 1px solid var(--white-3);
+  border-radius: 8px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: 0.3s;
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.btn-icon:hover {
+  background-color: var(--white-3);
+  color: var(--white);
+  border-color: var(--sec);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* --- GRILLES & CONTENEURS --- */
+.a-propos-contenu, .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.a-propos-text p {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.image-a-propos {
+    width: 50%;
+}
+
+/* Organisation des compétences */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.skill-category h4 {
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.projets-contenu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- TAGS --- */
+.skill-tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--white-3);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+.skill-tag.petit {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  background-color: var(--white-3); /* Légèrement violet pour les projets */
+}
+
+/* --- CARTES PROJETS --- */
+.card {
+  background: rgba(20, 20, 20, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(164, 118, 255, 0.3);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-desc {
+  color: var(--white);
+  font-size: 0.9rem;
+  flex-grow: 1; /* Pousse le bouton vers le bas */
+}
+
+ 
+
+.card-links {
+  margin-top: 0.5rem;
+}
+
+/* --- FORMULAIRE --- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid var(--white-3);
+  border-radius: 8px;
+  color: var(--white);
+  outline: none;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--sec);
+}
+
+button[type="submit"] {
+  padding: 1rem;
+  background: var(--white-3);
+  color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--sec);
+}
+
+
+
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .a-propos-contenu, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  nav { width: 90%; justify-content: center; }
+}
